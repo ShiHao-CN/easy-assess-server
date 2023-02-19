@@ -1,0 +1,25 @@
+server:
+  port: 8989
+
+spring:
+  output:
+    ansi:
+      enable: always
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://172.31.137.72:5432/postgres?currentSchema=easy_assess
+    username: postgres
+    password: Passw0rd
+  data:
+    rest:
+      basepath: /api
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  config: config/dev/logback.xml
+
+
+
