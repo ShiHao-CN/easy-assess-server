@@ -13,9 +13,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class StudentQueryReqDTO extends RequestBaseDTO {
 
-    @JsonProperty("QueryType")
-    private String queryType;
-
     @JsonProperty("Id")
     private Long id;
 

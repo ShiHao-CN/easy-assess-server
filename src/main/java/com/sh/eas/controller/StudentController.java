@@ -8,10 +8,8 @@ import com.sh.eas.service.StudentService;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,26 +21,47 @@ public class StudentController {
     StudentService studentService;
 
     @PostMapping(path = "/inquire")
-    public StudentQueryResDTO queryStudentInfo(@RequestBody StudentQueryReqDTO studentQueryReqDTO) {
+    public StudentQueryResDTO queryStudentInfoByName(@RequestBody StudentQueryReqDTO studentQueryReqDTO) {
         StudentQueryResDTO studentQueryResDTO = new StudentQueryResDTO();
-        if (ObjectUtils.isNotEmpty(studentQueryReqDTO) && StringUtils.isNotEmpty(studentQueryReqDTO.getQueryType())) {
-            switch (studentQueryReqDTO.getQueryType()) {
-                case "1":
-                    // by id
-                    break;
-                case "2":
-                    // by name
-                    List<StudentDTO> studentDTOList = studentService.getStudentList(studentQueryReqDTO.getName());
-                    studentQueryResDTO
-                            .setStudentList(studentDTOList)
-                            .setPageSize(studentQueryReqDTO.getPageSize())
-                            .setPageNumber(studentQueryReqDTO.getPageNumber())
-                            .setTotalCount(studentDTOList.size());
-
-            }
+        if (ObjectUtils.isNotEmpty(studentQueryReqDTO) && StringUtils.isNotEmpty(studentQueryReqDTO.getName())) {
+            List<StudentDTO> studentDTOList = studentService.getStudentList(studentQueryReqDTO.getName());
+            studentQueryResDTO
+                    .setStudentList(studentDTOList)
+                    .setPageSize(studentQueryReqDTO.getPageSize())
+                    .setPageNumber(studentQueryReqDTO.getPageNumber())
+                    .setTotalCount(studentDTOList.size());
         }
 
         return studentQueryResDTO;
     }
 
+    @PostMapping(path = "/retrieve")
+    public StudentDTO queryStudentInfoById(@RequestBody StudentQueryReqDTO studentQueryReqDTO) {
+        if (null != studentQueryReqDTO && null != studentQueryReqDTO.getId()) {
+            StudentDTO studentDTO = studentService.getStudent(studentQueryReqDTO.getId());
+            return studentDTO;
+        }
+        return null;
+    }
+
+    @PostMapping(path = "/create")
+    public Boolean createStudentInfo(@RequestBody StudentDTO studentDTO) {
+        if (null != studentDTO) {
+            return studentService.createStudentInfo(studentDTO);
+        }
+        return false;
+    }
+
+    @PostMapping(path = "/delete")
+    public Boolean deleteStudentInfo(@RequestBody StudentDTO studentDTO) {
+        if (null != studentDTO && null != studentDTO.getId()) {
+            return studentService.deleteStudentInfoById(studentDTO.getId());
+        }
+        return false;
+    }
+
+    @GetMapping(path = "/get")
+    public StudentDTO getStudentInfoById(@Param("Id") Long id) {
+        return studentService.getStudent(id);
+    }
 }

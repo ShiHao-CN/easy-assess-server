@@ -29,4 +29,22 @@ public class StudentDTO extends BaseDTO {
     @JsonProperty("BirthDate")
     @JsonFormat(pattern = EasConstants.DATE_FORMAT, timezone = "TIME_ZONE")
     private Date birthDate;
+
+    @JsonProperty("CreateAt")
+    @JsonFormat(pattern = EasConstants.DATE_FORMAT, timezone = "TIME_ZONE")
+    private Date createAt;
+
+    @JsonProperty("CreateBy")
+    private String createBy;
+
+    @JsonProperty("UpdateAt")
+    @JsonFormat(pattern = EasConstants.DATE_FORMAT, timezone = "TIME_ZONE")
+    private Date updateAt;
+
+    @JsonProperty("UpdateBy")
+    private String updateBy;
+
+    @JsonProperty("Version")
+    private Long version;
+
 }
