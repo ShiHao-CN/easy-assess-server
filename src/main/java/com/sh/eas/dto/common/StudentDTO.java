@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -28,18 +30,18 @@ public class StudentDTO extends BaseDTO {
 
     @JsonProperty("BirthDate")
     @JsonFormat(pattern = EasConstants.DATE_FORMAT, timezone = "TIME_ZONE")
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @JsonProperty("CreateAt")
-    @JsonFormat(pattern = EasConstants.DATE_FORMAT, timezone = "TIME_ZONE")
-    private Date createAt;
+    @JsonFormat(pattern = EasConstants.DATE_TIME_FORMAT, timezone = "TIME_ZONE")
+    private LocalDateTime createAt;
 
     @JsonProperty("CreateBy")
     private String createBy;
 
     @JsonProperty("UpdateAt")
-    @JsonFormat(pattern = EasConstants.DATE_FORMAT, timezone = "TIME_ZONE")
-    private Date updateAt;
+    @JsonFormat(pattern = EasConstants.DATE_TIME_FORMAT, timezone = "TIME_ZONE")
+    private LocalDateTime updateAt;
 
     @JsonProperty("UpdateBy")
     private String updateBy;

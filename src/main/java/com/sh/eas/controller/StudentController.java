@@ -44,13 +44,22 @@ public class StudentController {
         return null;
     }
 
-    @PostMapping(path = "/create")
+    @PostMapping(path = "/save")
     public Boolean createStudentInfo(@RequestBody StudentDTO studentDTO) {
         if (null != studentDTO) {
-            return studentService.createStudentInfo(studentDTO);
+            return studentService.saveStudentInfo(studentDTO);
         }
         return false;
     }
+
+    @PostMapping(path = "/update")
+    public Boolean updateStudentInfo(@RequestBody StudentDTO studentDTO){
+        if(null != studentDTO){
+            return studentService.updateStudentInfo(studentDTO);
+        }
+        return false;
+    }
+
 
     @PostMapping(path = "/delete")
     public Boolean deleteStudentInfo(@RequestBody StudentDTO studentDTO) {

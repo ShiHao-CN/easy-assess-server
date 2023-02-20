@@ -1,4 +1,4 @@
-package com.sh.eas.base.exception;
+package com.sh.eas.core.exception;
 
 public class EasBusinessException extends RuntimeException {
 

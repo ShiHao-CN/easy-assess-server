@@ -1,7 +1,7 @@
-package com.sh.eas.base.exception;
+package com.sh.eas.core.exception;
 
-import com.sh.eas.base.response.Result;
-import com.sh.eas.base.response.ResultEnum;
+import com.sh.eas.core.response.Result;
+import com.sh.eas.core.response.ResultEnum;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 

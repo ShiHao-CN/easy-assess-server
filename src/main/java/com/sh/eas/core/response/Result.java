@@ -1,4 +1,4 @@
-package com.sh.eas.base.response;
+package com.sh.eas.core.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

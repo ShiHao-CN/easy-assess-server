@@ -1,4 +1,4 @@
-package com.sh.eas.base.response;
+package com.sh.eas.core.response;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

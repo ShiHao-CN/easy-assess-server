@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -29,16 +31,16 @@ public class Student {
     private String nickName;
 
     @Column(name = "birth_date")
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @Column(name = "create_at")
-    private Date createAt;
+    private LocalDateTime createAt;
 
     @Column(name = "create_by")
     private String createBy;
 
     @Column(name = "update_at")
-    private Date updateAt;
+    private LocalDateTime updateAt;
 
     @Column(name = "update_by")
     private String updateBy;
